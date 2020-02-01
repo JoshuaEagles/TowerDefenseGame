@@ -5,16 +5,15 @@ var buttons# = ["StartButton", "ExitButton"]
 var current_button = 0
 
 func _ready():
-	buttons = [get_node("VBoxContainer/StartButton"), get_node("VBoxContainer/ExitButton")]
+	buttons = [get_node("VBoxContainer/VBoxContainer/StartButton"), get_node("VBoxContainer/VBoxContainer/ExitButton")]
 
-	get_node("VBoxContainer/StartButton")
-	$VBoxContainer/StartButton
+	# get_node("VBoxContainer/VBoxContainer/StartButton")
+	# $VBoxContainer/StartButton
 
 func _process(delta):
 	for button in buttons:
 		if button.pressed:
 			button.action()
-		
 	
 	if ($Selected.visible):
 		if Input.is_action_just_pressed("menu_up"):
