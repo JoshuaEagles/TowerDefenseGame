@@ -11,7 +11,7 @@ func _ready():
 
 func _process(delta):
 	for enemy_notifier in $EnemyNotifiers.get_children():
-		var enemy = enemy_notifier.associated_enemy
+		var enemy = enemy_notifier.associated_enemy.get_child(0)
 		enemy_notifier.visible = !enemy.get_node("VisibilityNotifier2D").is_on_screen()
 		if !enemy.get_node("VisibilityNotifier2D").is_on_screen():
 			var player_enemy_difference = position - enemy.position
@@ -29,9 +29,10 @@ func _process(delta):
 	$Cursor.position = $Camera2D.get_global_mouse_position()
 	
 	if (Input.is_action_pressed("menu_action")):
-		for body in $Cursor/Area2D.get_overlapping_bodies():
-			if body is Enemy_Base:
-				body.kill()
+		var newTrap = load("res://SimpleTrap.tscn").instance()
+		newTrap.set_as_toplevel(true)
+		newTrap.setup($Camera2D.get_global_mouse_position())
+		add_child(newTrap)
 
 func _on_Enemy_Master_new_enemy(enemy : Node2D):
 	var instanced_notifier = enemy_notifier.instance()
