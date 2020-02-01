@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://World/Center.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/EnemyMaster.gd" type="Script" id=3]
+[ext_resource path="res://World/CrapWorld.png" type="Texture" id=4]
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 778.765, 483.518 )
+texture = ExtResource( 4 )
+
+[node name="Center" type="Node2D" parent="."]
+position = Vector2( 640, 360 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Center"]
+modulate = Color( 0.219608, 1, 0, 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 536.129, 242.177 )
+
+[node name="EnemyMaster" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="SpawnedEnemies" type="Node2D" parent="EnemyMaster"]
+
+[node name="EnemySpawnPoints" type="Node2D" parent="EnemyMaster"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SpawnPointN" type="Node2D" parent="EnemyMaster/EnemySpawnPoints"]
+position = Vector2( 640, -640 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SpawnPointS" type="Node2D" parent="EnemyMaster/EnemySpawnPoints"]
+position = Vector2( 640, 1360 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SpawnPointE" type="Node2D" parent="EnemyMaster/EnemySpawnPoints"]
+position = Vector2( -360, 360 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SpawnPointW" type="Node2D" parent="EnemyMaster/EnemySpawnPoints"]
+position = Vector2( 1640, 360 )
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="enemy_killed" from="EnemyMaster" to="Player" method="_on_Enemy_Master_enemy_killed"]
+[connection signal="new_enemy" from="EnemyMaster" to="Player" method="_on_Enemy_Master_new_enemy"]
