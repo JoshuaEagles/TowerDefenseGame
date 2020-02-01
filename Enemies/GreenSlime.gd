@@ -1,13 +1,24 @@
 extends Enemy_Base
 	
-const SPEED = 1.0/5.0
-const slime_colour = Color(146, 197, 117)
+onready var progress_bar = $GreenSlimePathFollow/ProgressBar
+onready var animated_sprite = $GreenSlimePathFollow/AnimatedSprite
 	
 func _ready():
-	pass
+	SPEED = 500
+	SLIME_COLOUR = Color(146, 197, 117)
+	
+	can_move = true
+	
+	max_health = 100
+	health = max_health
+	progress_bar.max_value = max_health 
+	progress_bar.value = health
 	
 func _process(delta : float) -> void:
-	if (!$Animated_Sprite.is_playing()):
-		$Animated_Sprite/AnimationPlayer.play("Normal")
-	.move_towards_center(delta, SPEED)
-
+	.general_process()
+	.move_towards_center(delta)
+	
+	progress_bar.value = health
+	
+	if (!animated_sprite.is_playing()):
+		animated_sprite.get_node("AnimationPlayer").play("Normal")
