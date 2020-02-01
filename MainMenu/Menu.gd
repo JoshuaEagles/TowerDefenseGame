@@ -11,7 +11,7 @@ func _process(delta):
 	for button in buttons:
 		if button.pressed:
 			button.action()
-  
+
 	if ($Selected.visible):
 		if Input.is_action_just_pressed("menu_up"):
 			current_button += 1
