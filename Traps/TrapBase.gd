@@ -14,7 +14,6 @@ class_name TrapBase
 func init(position : Vector2, rotation: float):
 	self.position = position
 	self.rotation = rotation
-	self.element = element
 
 func find_stuff_to_ouch():
 	var enemies_in_range = []

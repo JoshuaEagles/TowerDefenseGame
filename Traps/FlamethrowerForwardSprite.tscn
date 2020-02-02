@@ -1,14 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Traps/Assets/FlameThrower6.png" type="Texture" id=1]
 [ext_resource path="res://Traps/Assets/Flame.png" type="Texture" id=2]
 [ext_resource path="res://Traps/Assets/Center.png" type="Texture" id=3]
+[ext_resource path="res://Traps/Assets/FireDamaged6.png" type="Texture" id=4]
 
-[node name="Sprite" type="Sprite"]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Broken",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Working",
+"speed": 5.0
+} ]
+
+[node name="Sprite" type="AnimatedSprite"]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 1 )
+frames = SubResource( 1 )
+animation = "Working"
 
 [node name="Effects" type="Node2D" parent="."]
+visible = false
 
 [node name="EffectSprite3" type="Sprite" parent="Effects"]
 position = Vector2( 126.592, -35.4174 )

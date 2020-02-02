@@ -13,6 +13,13 @@ func _ready():
 	self_damage_per_second = 15
 
 func _process(delta):
+	if health <= 0:
+		$Sprite/Effects.visible = false
+		$Sprite.play("Broken")
+		return
+	
+	$Sprite.play("Working")
+	
 	var enemies_in_range = .find_stuff_to_ouch()
 	if enemies_in_range:
 		for enemy in enemies_in_range:

@@ -8,7 +8,6 @@ var can_move : bool
 var center : Vector2
 var spawn_point : Vector2
 var pathPercent : float
-var relativeTotalMovement : Vector2
 var max_health
 var health
 
@@ -16,8 +15,7 @@ var ouched : bool
 
 class_name Enemy_Base
 
-func init(spawn_point : Vector2):
-	self.spawn_point = spawn_point
+func init():
 	center = get_tree().get_root().get_node("World/Center").position
 	
 	self.get_node("GreenSlimePathFollow").position = Vector2(-100000, -100000)

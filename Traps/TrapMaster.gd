@@ -27,11 +27,17 @@ func _process(delta):
 	
 	ghost.rotation = rotation_to_place
 	ghost.position = get_global_mouse_position()
+	$RepairRadius.position = get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("action"):
 		var new_trap = trap_types[type_to_place].instance()
 		new_trap.init(get_global_mouse_position(), rotation_to_place)
 		$PlacedTraps.add_child(new_trap)
+		
+	if Input.is_action_pressed("action2"):
+		for area in $RepairRadius.get_overlapping_areas():
+			if area.get_parent() is TrapBase:
+				area.get_parent().health += 100 * delta
 	
 	if Input.is_action_pressed("rotate_right"):
 		rotation_to_place += 0.1
@@ -44,6 +50,3 @@ func _process(delta):
 		type_to_place -= 1
 
 	type_to_place = type_to_place % trap_types.size()
-
-func change_ghost(trap_type : Node2D):
-	pass
