@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const SPEED = 1000#200
+const SPEED = 1500#200
 
 var velocity = Vector2()
 
@@ -10,7 +10,7 @@ onready var simple_trap = preload("res://SimpleTrap.tscn")
 func _ready():
 	pass
 
-func _process(delta):
+func _physics_process(delta):
 	for enemy_notifier in $EnemyNotifiers.get_children():
 		var enemy = enemy_notifier.associated_enemy.get_child(0)
 		enemy_notifier.visible = !enemy.get_node("VisibilityNotifier2D").is_on_screen()
@@ -26,7 +26,11 @@ func _process(delta):
 	
 	move_and_slide(velocity * SPEED)
 	
-	$AnimatedSprite.play("Walk")
+	if velocity.length() > 0:
+		$AnimatedSprite.play("Walk")
+	else:
+		$AnimatedSprite.stop()
+		
 	if velocity != Vector2(0,0):
 		$AnimatedSprite.rotation = atan2(velocity.x, -velocity.y)
 	
@@ -38,6 +42,7 @@ func _process(delta):
 
 func _on_Enemy_Master_new_enemy(enemy : Node2D):
 	var instanced_notifier = enemy_notifier.instance()
+	instanced_notifier.get_node("Sprite").set_modulate(enemy.SLIME_COLOUR)
 	$EnemyNotifiers.add_child(instanced_notifier)
 	instanced_notifier.associated_enemy = enemy
 

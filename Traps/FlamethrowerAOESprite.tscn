@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Traps/Assets/FlameThrower4.png" type="Texture" id=1]
+[ext_resource path="res://Traps/Assets/Flame.png" type="Texture" id=2]
+[ext_resource path="res://Traps/Assets/Center.png" type="Texture" id=3]
+
+[node name="Sprite" type="Sprite"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Effects" type="Node2D" parent="."]
+visible = false
+
+[node name="EffectSprite" type="Sprite" parent="Effects"]
+position = Vector2( -322.476, -383.507 )
+rotation = -0.707316
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 2 )
+
+[node name="EffectSprite2" type="Sprite" parent="Effects"]
+position = Vector2( 409.448, -301.937 )
+rotation = 1.1102
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 2 )
+
+[node name="EffectSprite3" type="Sprite" parent="Effects"]
+position = Vector2( 338.583, 309.241 )
+rotation = 2.332
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 2 )
+
+[node name="EffectSprite4" type="Sprite" parent="Effects"]
+position = Vector2( -307.792, 345.694 )
+rotation = -2.46731
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 2 )
+
+[node name="OuchAreaVisual" type="Sprite" parent="."]
+modulate = Color( 0, 0.717647, 1, 0.219608 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )

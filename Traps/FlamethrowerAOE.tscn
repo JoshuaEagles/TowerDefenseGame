@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Traps/FlamethrowerAOE.gd" type="Script" id=1]
+[ext_resource path="res://Traps/FlamethrowerAOESprite.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 1529.05
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.85098, 1, 0, 1 )
+
+[node name="FlamethrowerAOE" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="OuchArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OuchArea"]
+visible = false
+position = Vector2( 2.6499, 5.30005 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." instance=ExtResource( 2 )]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -362.807
+margin_top = -617.245
+margin_right = 367.193
+margin_bottom = -501.245
+custom_styles/fg = SubResource( 2 )
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

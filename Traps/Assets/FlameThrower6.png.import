@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FlameThrower4.png-de9d9ddd174d48f7df725d4c6172e7f2.stex"
+path="res://.import/FlameThrower6.png-dea2ed6bdb21bd0f18d6b7967ccd3053.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Traps/FlameThrower4.png"
-dest_files=[ "res://.import/FlameThrower4.png-de9d9ddd174d48f7df725d4c6172e7f2.stex" ]
+source_file="res://Traps/Assets/FlameThrower6.png"
+dest_files=[ "res://.import/FlameThrower6.png-dea2ed6bdb21bd0f18d6b7967ccd3053.stex" ]
 
 [params]
 

@@ -4,8 +4,8 @@ onready var progress_bar = $GreenSlimePathFollow/ProgressBar
 onready var animated_sprite = $GreenSlimePathFollow/AnimatedSprite
 	
 func _ready():
-	SPEED = 150
-	SLIME_COLOUR = Color(146, 197, 117)
+	SPEED = 1500
+	SLIME_COLOUR = Color(0.573, 0.773, 0.359)
 	
 	can_move = true
 	
@@ -16,7 +16,11 @@ func _ready():
 	
 func _process(delta : float) -> void:
 	.general_process()
-	.move_towards_center(delta)
+	
+	var speedMultiplier = 1
+	if ouched:
+		speedMultiplier = 0.7
+	.move_towards_center(delta * speedMultiplier)
 	
 	progress_bar.value = health
 	

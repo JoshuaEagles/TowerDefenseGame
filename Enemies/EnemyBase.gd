@@ -12,13 +12,15 @@ var relativeTotalMovement : Vector2
 var max_health
 var health
 
+var ouched : bool
+
 class_name Enemy_Base
 
 func init(spawn_point : Vector2):
 	self.spawn_point = spawn_point
 	center = get_tree().get_root().get_node("World/Center").position
 	
-	self.get_node("GreenSlimePathFollow").position = Vector2(-1000, -1000)
+	self.get_node("GreenSlimePathFollow").position = Vector2(-100000, -100000)
 	self.get_node("GreenSlimePathFollow").offset = 0
 	
 	var pathArray = get_tree().get_root().get_node("World/Navigation2D").get_simple_path(spawn_point, center, false)
@@ -40,6 +42,7 @@ func move_towards_center(delta : float) -> void:
 
 func ouch(hurt_amount : float):
 	health -= hurt_amount
+	ouched = true
 
 func kill():
 	var enemyMaster = get_parent().get_parent()

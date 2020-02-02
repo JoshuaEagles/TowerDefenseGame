@@ -58,7 +58,7 @@ bg_color = Color( 0.427451, 0.85098, 0.360784, 1 )
 corner_detail = 1
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 19.2712
+radius = 210.559
 height = 6.13266
 
 [node name="GreenSlime" type="Path2D"]
@@ -66,9 +66,11 @@ curve = SubResource( 1 )
 script = ExtResource( 24 )
 
 [node name="GreenSlimePathFollow" type="PathFollow2D" parent="."]
+rotate = false
+loop = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GreenSlimePathFollow"]
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( -10.2744, -89.0441 )
 frames = SubResource( 2 )
 animation = "Normal"
 
@@ -78,10 +80,10 @@ anims/Normal = SubResource( 3 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="GreenSlimePathFollow"]
 
 [node name="ProgressBar" type="ProgressBar" parent="GreenSlimePathFollow"]
-margin_left = -41.0
-margin_top = -44.5924
-margin_right = 43.0
-margin_bottom = -36.5924
+margin_left = -273.132
+margin_top = -388.059
+margin_right = 280.868
+margin_bottom = -341.059
 custom_styles/fg = SubResource( 4 )
 value = 100.0
 percent_visible = false
@@ -94,5 +96,5 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenSlimePathFollow/Area2D"]
-position = Vector2( 1.90851, -3.575 )
+position = Vector2( 3.41583, -24.6777 )
 shape = SubResource( 5 )
