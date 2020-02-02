@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
-const SPEED = 400#200
+const SPEED = 1000#200
 
 var velocity = Vector2()
 
 onready var enemy_notifier = preload("res://Player/EnemyNotifier.tscn")
+onready var simple_trap = preload("res://SimpleTrap.tscn")
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
 
 func _process(delta):
 	for enemy_notifier in $EnemyNotifiers.get_children():
@@ -25,11 +26,12 @@ func _process(delta):
 	
 	move_and_slide(velocity * SPEED)
 	
-	$Cursor.set_as_toplevel(true)
-	$Cursor.position = $Camera2D.get_global_mouse_position()
+	$AnimatedSprite.play("Walk")
+	if velocity != Vector2(0,0):
+		$AnimatedSprite.rotation = atan2(velocity.x, -velocity.y)
 	
-	if (Input.is_action_pressed("menu_action")):
-		var newTrap = load("res://SimpleTrap.tscn").instance()
+	if (Input.is_action_just_pressed("menu_action")):
+		var newTrap = simple_trap.instance()
 		newTrap.set_as_toplevel(true)
 		newTrap.setup($Camera2D.get_global_mouse_position())
 		add_child(newTrap)

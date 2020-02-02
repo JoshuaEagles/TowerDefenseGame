@@ -4,7 +4,7 @@ onready var progress_bar = $GreenSlimePathFollow/ProgressBar
 onready var animated_sprite = $GreenSlimePathFollow/AnimatedSprite
 	
 func _ready():
-	SPEED = 500
+	SPEED = 150
 	SLIME_COLOUR = Color(146, 197, 117)
 	
 	can_move = true

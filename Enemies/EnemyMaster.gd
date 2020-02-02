@@ -8,13 +8,8 @@ onready var green_slime = preload("res://Enemies/GreenSlime.tscn")
 func _ready():
 	var enemy = green_slime.instance()
 	$SpawnedEnemies.add_child(enemy)
-	enemy.init($EnemySpawnPoints/SpawnPointN.position)
+	enemy.init($EnemySpawnPoints/SpawnPoint.position)
 	emit_signal("new_enemy",  enemy)
-
-#	enemy = green_slime.instance()
-#	$SpawnedEnemies.add_child(enemy)
-#	enemy.init($EnemySpawnPoints/SpawnPointN.position)
-#	emit_signal("new_enemy", enemy)
 
 func kill_enemy(enemy : Node2D):
 	emit_signal("enemy_killed", enemy)
